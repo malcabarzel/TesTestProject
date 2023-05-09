@@ -38,7 +38,7 @@ export const TestPartsView = () => {
 
                 <TestPartStyle key={testPart.TestPartId}>
                     <p>  {testPart.TestPartDsc}</p>
-                    <p> ציון ממוחשב: {testPart.TestPartPoints - (testPart.PointsToReduce || 0)} </p>
+                    <p> ציון מחושב: {testPart.TestPartPoints - (testPart.PointsToReduce || 0)} </p>
                    
                     {isPrintMode && 
                        <p> ציון המורה: {testPart.TeacherGrade|| testPart.TestPartPoints} </p>

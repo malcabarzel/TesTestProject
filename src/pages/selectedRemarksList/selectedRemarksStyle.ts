@@ -8,6 +8,16 @@ export const RemarksList = styled.div`
     direction: rtl;
 
     li:nth-child(odd){
-        background-color: lightyellow;
+        border: 1px solid black;
+        border-width: 1px 0px;
     }
+
+    li{
+        padding: 0px 16px 0px 48px;
+    }
+ `
+
+ export const RemarkContect = styled.div`
+    color: black;
+    font-size: 15px;
  `

@@ -7,7 +7,7 @@ import ListItemText from "@mui/material/ListItemText";
 import Avatar from "@mui/material/Avatar";
 import IconButton from "@mui/material/IconButton";
 import DeleteIcon from "@mui/icons-material/Delete";
-import { RemarksList } from "./selectedRemarksStyle";
+import { RemarkContect, RemarksList } from "./selectedRemarksStyle";
 import { useDispatch, useSelector } from "react-redux";
 import { Remark } from "../../models/Remark";
 import { SelecedRemark } from "../../models/SelectedRemark";
@@ -17,6 +17,7 @@ import { reducePoints } from "../../state/testParts.slice";
 function SelectedRemarksList() {
   const selectedRemarks = useSelector((state: any) => state.remarks.selectedRemarks);
   const dispatch = useDispatch();
+  const { isPrintMode } = useSelector((state: any) => state.testParts);
 
   const deleteSelectedRemark = (remark:SelecedRemark)=>{
     dispatch(reducePoints({testPart:remark.Remark.TestPartId, pointsToReduce:-(remark.Remark.RemarkPoints||0)}))
@@ -36,24 +37,25 @@ function SelectedRemarksList() {
                   aria-label="delete"
                   onClick={()=>deleteSelectedRemark(remark)}
                 >
-                  <DeleteIcon />
+               {!isPrintMode &&  <DeleteIcon />}  
                 </IconButton>
               }
             >
+                 <ListItemAvatar>
+                <Avatar>{remark.Sum}</Avatar>
+              </ListItemAvatar>
               <ListItemText
                 primary={
                   remark.Remark.RemarkId + " " + remark.Remark.RemarkName
                 }
                 secondary={
-                  <span>
+                  <RemarkContect>
                     {remark.Remark.RemarkDsc} <br />{" "}
                     {remark.Remark.RemarkPoints + " נקודות"}
-                  </span>
+                  </RemarkContect>
                 }
               />
-              <ListItemAvatar>
-                <Avatar>{remark.Sum}</Avatar>
-              </ListItemAvatar>
+           
             </ListItem>
           ))}
         </List>

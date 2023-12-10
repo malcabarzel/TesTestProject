@@ -19,14 +19,19 @@ function SelectedRemarksList() {
   const selectedRemarks = useSelector((state: any) => state.remarks.selectedRemarks);
   const dispatch = useDispatch();
   const { isPrintMode } = useSelector((state: any) => state.testParts);
+  
 
   const remarksToPresent: SelecedRemark[] = useMemo(() => {
     if (!selectedRemarks)
       return [];
+    
     let arr: SelecedRemark[] = [...selectedRemarks];
-    arr = [...arr.reverse()];
+    if(!isPrintMode){
+        arr = [...arr.reverse()];
+    }
+  
     return arr;
-  }, [selectedRemarks]);
+  }, [selectedRemarks, isPrintMode]);
 
   const deleteSelectedRemark = (remark: SelecedRemark) => {
     dispatch(reducePoints({ testPart: remark.Remark.TestPartId, pointsToReduce: -(remark.Remark.RemarkPoints || 0) }))

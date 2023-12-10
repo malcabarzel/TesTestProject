@@ -44,7 +44,7 @@ export const App = () => {
     <Directions>
 
 
-      <Box sx={{ flexGrow: 1, maxWidth: 7520 }}>
+      <Box style={{padding:'100px'}} sx={{ flexGrow: 1, maxWidth: 7520 }}>
         <Switch onChange={changePrintMode}
           inputProps={{ 'aria-label': 'controlled' }}></Switch>
         <Container fixed style={{ padding: "20px" }}>

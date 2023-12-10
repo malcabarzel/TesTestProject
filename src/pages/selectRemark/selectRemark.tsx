@@ -1,4 +1,4 @@
-import React, { ChangeEvent, PropsWithChildren, useState } from "react";
+import React, { ChangeEvent, PropsWithChildren, useCallback, useState } from "react";
 import { TextField, Grid, Button, Typography } from "@mui/material";
 import Autocomplete, {
   AutocompleteChangeReason
@@ -34,7 +34,7 @@ function SelectRemark(props: PropsWithChildren<SelectRemarkData>) {
 
   useEffect(() => {
     setTestParts(testPartsData);
-    console.log({testPartsData});
+    console.log({ testPartsData });
   }, [testPartsData]);
 
   const remarkSelected = (
@@ -47,6 +47,12 @@ function SelectRemark(props: PropsWithChildren<SelectRemarkData>) {
       setSelectedTestPart(GetTestPart(value.TestPartId, testParts));
     }
   };
+
+  useEffect(() => {
+    if (selectedRemark) {
+      addRemarkToList();
+    }
+  }, [selectedRemark]);
 
   const testPartSelected = (
     event: ChangeEvent<{}>,
@@ -67,7 +73,7 @@ function SelectRemark(props: PropsWithChildren<SelectRemarkData>) {
   const addRemarkToList = () => {
     if (selectedRemark != null) {
       dispatch(addRemark(selectedRemark));
-      dispatch(reducePoints({ testPart: selectedRemark.TestPartId, pointsToReduce: (selectedRemark.RemarkPoints||0) }))
+      dispatch(reducePoints({ testPart: selectedRemark.TestPartId, pointsToReduce: (selectedRemark.RemarkPoints || 0) }))
     }
   };
 

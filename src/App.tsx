@@ -30,8 +30,8 @@ export const App = () => {
 
   const { isPrintMode } = useSelector((state: any) => state.testParts);
 
-  const changePrintMode =(event:any)=>{
-      dispatch(updatePrintMode(event.target.checked));
+  const changePrintMode = (event: any) => {
+    dispatch(updatePrintMode(event.target.checked));
   }
 
   useEffect(() => {
@@ -42,21 +42,25 @@ export const App = () => {
 
   return (
     <Directions>
-         
+
 
       <Box sx={{ flexGrow: 1, maxWidth: 7520 }}>
-      <Switch  onChange={changePrintMode}
-          inputProps={{ 'aria-label': 'controlled' }}></Switch> 
+        <Switch onChange={changePrintMode}
+          inputProps={{ 'aria-label': 'controlled' }}></Switch>
         <Container fixed style={{ padding: "20px" }}>
-     
-            <SelectTest students={students} />
-            {!isPrintMode && <>
+
+          <SelectTest students={students} />
+
+        </Container>
+        <TestPartsView></TestPartsView>
+        <Grades></Grades>
+        <Container fixed style={{ padding: "20px" }}>
+          {!isPrintMode && <>
             <SelectRemark testParts={testParts} />
           </>
           }
         </Container>
-        <TestPartsView></TestPartsView>
-        <Grades></Grades>
+     
         <SelectedRemarksDiv>
           <SelectedRemarksList></SelectedRemarksList>
         </SelectedRemarksDiv>

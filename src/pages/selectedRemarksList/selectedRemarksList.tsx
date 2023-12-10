@@ -1,4 +1,4 @@
-import { PropsWithChildren } from "react";
+import { PropsWithChildren, useMemo } from "react";
 import { SelectedRemarksListData } from "./SelectedRemarksListData";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
@@ -20,13 +20,21 @@ function SelectedRemarksList() {
   const dispatch = useDispatch();
   const { isPrintMode } = useSelector((state: any) => state.testParts);
 
+  const remarksToPresent: SelecedRemark[] = useMemo(() => {
+    if (!selectedRemarks)
+      return [];
+    let arr: SelecedRemark[] = [...selectedRemarks];
+    arr = [...arr.reverse()];
+    return arr;
+  }, [selectedRemarks]);
+
   const deleteSelectedRemark = (remark: SelecedRemark) => {
     dispatch(reducePoints({ testPart: remark.Remark.TestPartId, pointsToReduce: -(remark.Remark.RemarkPoints || 0) }))
     dispatch(deleteRemark(remark.Remark.RemarkId));
   }
 
   const addSelectedRemark = (remark: SelecedRemark) => {
-    dispatch(reducePoints({ testPart: remark.Remark.TestPartId, pointsToReduce: (remark.Remark.RemarkPoints||0) }))
+    dispatch(reducePoints({ testPart: remark.Remark.TestPartId, pointsToReduce: (remark.Remark.RemarkPoints || 0) }))
     dispatch(addRemark(remark.Remark));
   }
 
@@ -34,7 +42,7 @@ function SelectedRemarksList() {
     <>
       <RemarksList>
         <List dense={false}>
-          {selectedRemarks?.map((remark: SelecedRemark) => (
+          {remarksToPresent?.map((remark: SelecedRemark) => (
             <ListItem
               key={remark.Remark.RemarkId}
               secondaryAction={
@@ -53,7 +61,7 @@ function SelectedRemarksList() {
                         aria-label="delete"
                         onClick={() => addSelectedRemark(remark)}
                       >
-                         <IcecreamIcon />
+                        <IcecreamIcon />
                       </IconButton>
                     </>
 

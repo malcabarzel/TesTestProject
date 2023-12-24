@@ -45,12 +45,17 @@ function SelectRemark(props: PropsWithChildren<SelectRemarkData>) {
     setSelectedRemark(value);
     if (value != null) {
       setSelectedTestPart(GetTestPart(value.TestPartId, testParts));
+
     }
   };
 
   useEffect(() => {
     if (selectedRemark) {
       addRemarkToList();
+      setTimeout(() => {
+        setSelectedTestPart(null);
+        setSelectedRemark(null);
+      }, 2000);
     }
   }, [selectedRemark]);
 
@@ -113,15 +118,6 @@ function SelectRemark(props: PropsWithChildren<SelectRemarkData>) {
               <TextField {...params} label="הערה" variant="outlined" />
             )}
           />
-        </Grid>
-        <Grid item>
-          <Button
-            disabled={selectedRemark == null}
-            onClick={addRemarkToList}
-            variant="contained"
-          >
-            הוסף הערה
-          </Button>
         </Grid>
       </Grid>
     </RootGrid>

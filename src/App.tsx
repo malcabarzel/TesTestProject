@@ -1,24 +1,21 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 // import './App.css';
-import SelectTest from './pages/selectTest/selectTest';
 import SelectRemark from './pages/selectRemark/selectRemark';
+import SelectTest from './pages/selectTest/selectTest';
 import SelectedRemarksList from './pages/selectedRemarksList/selectedRemarksList';
 
-import { remarks as dataRemarks, students as dataStudents, testParts as dataTestParts } from './initialData';
-import { useState } from 'react';
-import { Student } from './models/Student';
 import { Container } from '@mui/material';
-import { Remark } from './models/Remark';
-import TestPart from './models/TestPart';
-import { SelecedRemark } from './models/SelectedRemark';
 import Box from '@mui/material/Box';
-import SelectPoints from './pages/selectPoints/selectPoints';
-import { SelectedRemarksDiv, SelectPointsDiv } from './pages/pagesStyle';
-import Directions from './helpers/Directions';
-import { TestPartsView } from './pages/testPartsView/TestPartsView';
-import Grades from './pages/grades/Grades';
 import Switch from '@mui/material/Switch';
+import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import Directions from './helpers/Directions';
+import { students as dataStudents, testParts as dataTestParts } from './initialData';
+import { Student } from './models/Student';
+import TestPart from './models/TestPart';
+import Grades from './pages/grades/Grades';
+import { SelectedRemarksDiv } from './pages/pagesStyle';
+import { TestPartsView } from './pages/testPartsView/TestPartsView';
 import { updatePrintMode } from './state/testParts.slice';
 
 export const App = () => {

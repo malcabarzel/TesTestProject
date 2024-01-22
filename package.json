@@ -28,8 +28,14 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "copy_build": "rm -rf $npm_package_config_deploy_directory/* && cp -R build/* $npm_package_config_deploy_directory",
+    "commit_build":"cd $npm_package_config_deploy_directory && git add --all && git commit -m 'automatic deploy commit' && git push -u origin main",
+    "deploy":"npm run build && npm run copy_build && npm run commit_build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
+  },
+  "config": {
+    "deploy_directory": "../malcka.github.io"
   },
   "eslintConfig": {
     "extends": [

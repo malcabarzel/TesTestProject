@@ -28,9 +28,14 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "copy_build": "rm -rf $npm_package_config_deploy_directory/* && cp -R build/* $npm_package_config_deploy_directory",
-    "commit_build":"cd $npm_package_config_deploy_directory && git add --all && git commit -m 'automatic deploy commit' && git push -u origin main",
-    "deploy":"npm run build && npm run copy_build && npm run commit_build",
+    "clone_deploy_dir_if_not_exists": "[ -d malcka.github.io ] || git clone https://github.com/malcka/malcka.github.io.git malcka.github.io",
+    "copy_build": "rm -rf malcka.github.io/* && cp -R build/* malcka.github.io",
+    "commit_build": "cd malcka.github.io && git add --all && git commit -m 'automatic deploy commit' && git push -u origin main",
+    "deploy": "npm run clone_deploy_dir_if_not_exists && npm run build && npm run copy_build && npm run commit_build",
+    "w-clone_deploy_dir_if_not_exists": "if not exist malcka.github.io (git clone https://github.com/malcka/malcka.github.io.git malcka.github.io) else (echo Directory 'malcka.github.io' already exists)",
+    "w-copy_build": "rmdir /S /Q malcka.github.io && xcopy /E /I build malcka.github.io",
+    "w-commit_build": "cd malcka.github.io && git add --all && git commit -m \"automatic deploy commit\" && git push -u origin main",
+    "w-deploy": "npm run clone_deploy_dir_if_not_exists && npm run build && npm run copy_build && npm run commit_build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

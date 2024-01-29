@@ -10,6 +10,7 @@
 
 # production
 /build
+/malcka.github.io
 
 # misc
 .DS_Store

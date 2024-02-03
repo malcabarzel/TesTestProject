@@ -45,7 +45,6 @@ function SelectRemark(props: PropsWithChildren<SelectRemarkData>) {
     setSelectedRemark(value);
     if (value != null) {
       setSelectedTestPart(GetTestPart(value.TestPartId, testParts));
-
     }
   };
 
@@ -53,17 +52,13 @@ function SelectRemark(props: PropsWithChildren<SelectRemarkData>) {
     if (selectedRemark) {
       addRemarkToList();
       setTimeout(() => {
-        setSelectedTestPart(null);
+        changeSelectedTestPart(null);
         setSelectedRemark(null);
       }, 2000);
     }
   }, [selectedRemark]);
 
-  const testPartSelected = (
-    event: ChangeEvent<{}>,
-    value: TestPart | null,
-    reason: AutocompleteChangeReason
-  ) => {
+  const changeSelectedTestPart = (value: TestPart | null) => {
     setSelectedTestPart(value);
     if (value != null) {
       setSelectedRemark(null);
@@ -73,6 +68,14 @@ function SelectRemark(props: PropsWithChildren<SelectRemarkData>) {
     } else {
       setFilteredRemarks(remarksData);
     }
+  }
+
+  const testPartSelected = (
+    event: ChangeEvent<{}>,
+    value: TestPart | null,
+    reason: AutocompleteChangeReason
+  ) => {
+    changeSelectedTestPart(value);
   };
 
   const addRemarkToList = () => {

@@ -57,7 +57,7 @@ function SelectTest(props: PropsWithChildren<SelectTestData>) {
 
                     <TextField
                         id="combo-box-demo"
-                        label="שם כיתה"
+                        label="1שם כיתה"
                         style={{ width: 300 }}
                         onChange={(event: any) => { setStudent(student => { return { ...student, familyName: event.target.value } }) }}
                     />

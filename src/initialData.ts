@@ -49,7 +49,7 @@ export const testParts: TestPart[] = [{
 
 export const remarks: Remark[] =[
     { RemarkId:1,TestPartId: 1,TestTypeId: 1, RemarkPoints:2, RemarkName: "הערת תוכן", 
-RemarkDsc: "	🔎חסרה כותרת. כתבי בקצרה את שם הנושא שבחרת. 🖍", }, 
+RemarkDsc: "	🔎חסרה כותרת!!!!!!!!!!!!. כתבי בקצרה את שם הנושא שבחרת. 🖍", }, 
     { RemarkId:2,TestPartId: 1,TestTypeId: 1, RemarkPoints:2, RemarkName: "הערת תוכן", 
 RemarkDsc: "	עיקר הפתיחה הוא הצגת הטענה, חסרונה עלול לגרום לנימוקים לקויים. העתיקי מהשאלון את הטענה ושלבי בפתיחה.", },
  { RemarkId:3,TestPartId: 1,TestTypeId: 1, RemarkPoints:2, RemarkName: "הערת תוכן", 

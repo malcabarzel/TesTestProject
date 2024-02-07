@@ -38,7 +38,7 @@ const remarksDataSlice = createSlice({
                 selectedRemarks.push({ Remark: remark, Sum: 1 });
             }
         },
-        deleteRemark:(state, action:PayloadAction<number>)=>{
+        deleteRemark:(state, action:PayloadAction<string>)=>{
             const selectedRemarks = state.selectedRemarks;
             const remarkId = action.payload;
             const existsIndex = selectedRemarks.findIndex((r) => r.Remark.RemarkId === remarkId);

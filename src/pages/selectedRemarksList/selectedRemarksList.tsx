@@ -6,7 +6,6 @@ import ListItemAvatar from "@mui/material/ListItemAvatar";
 import ListItemText from "@mui/material/ListItemText";
 import Avatar from "@mui/material/Avatar";
 import IconButton from "@mui/material/IconButton";
-import DeleteIcon from "@mui/icons-material/Delete";
 import IcecreamIcon from '@mui/icons-material/Icecream';
 import { RemarkContect, RemarksList } from "./selectedRemarksStyle";
 import { useDispatch, useSelector } from "react-redux";
@@ -14,6 +13,7 @@ import { Remark } from "../../models/Remark";
 import { SelecedRemark } from "../../models/SelectedRemark";
 import { addRemark, deleteRemark } from "../../state/remarks.slice";
 import { reducePoints } from "../../state/testParts.slice";
+import HighlightOffIcon from '@mui/icons-material/HighlightOff';
 
 function SelectedRemarksList() {
   const selectedRemarks = useSelector((state: any) => state.remarks.selectedRemarks);
@@ -59,7 +59,7 @@ function SelectedRemarksList() {
                         aria-label="delete"
                         onClick={() => deleteSelectedRemark(remark)}
                       >
-                        <DeleteIcon />
+                        <HighlightOffIcon/>
                       </IconButton>
                       <IconButton
                         edge="end"

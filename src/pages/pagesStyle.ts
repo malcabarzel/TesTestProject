@@ -1,7 +1,7 @@
-import { Grid } from '@mui/material';
+import { Grid, TableCell } from '@mui/material';
 import styled from 'styled-components';
 
-export const RootGrid  = styled(Grid)`
+export const RootGrid = styled(Grid)`
     flexGrow: 1
 `
 
@@ -23,4 +23,7 @@ export const SelectedRemarksDiv = styled.div`
     marginTop: "20px",
     overflow: "scroll",
     border: "3px solid #870b9f"
+`
+export const BoldTableCell = styled(TableCell)`
+    fontWeight: "bold"
 `

@@ -1,96 +1,129 @@
-import { Grid, TextField, Typography } from "@mui/material";
-import React, { useEffect } from "react";
+import { Grid, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, TextField, Typography } from "@mui/material";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import TestPart from "../../models/TestPart";
 import { SelecedRemark } from "../../models/SelectedRemark";
 import { SlidersContext, SlidersWrapper, TestPartStyle } from "./testPartsViewStyle";
 import { updateTestPart } from "../../state/testParts.slice";
+import { BoldTableCell } from "../pagesStyle";
 
 
 export const TestPartsView = () => {
 
-    const testPartsData: TestPart[] = useSelector((state: any) => state.testParts.testPartsData);
-    const selectedRemarks: SelecedRemark[] = useSelector((state: any) => state.remarks.selectedRemarks);
+  const testPartsData: TestPart[] = useSelector((state: any) => state.testParts.testPartsData);
+  const selectedRemarks: SelecedRemark[] = useSelector((state: any) => state.remarks.selectedRemarks);
 
-    const { isPrintMode } = useSelector((state: any) => state.testParts);
+  const { isPrintMode } = useSelector((state: any) => state.testParts);
 
-    const dispatch = useDispatch();
+  const [finalGrade, setFinalGrade] = useState(0);
 
-    const updateTeacherGrade = (testPart: TestPart, grade: number) => {
+  const [finalTeacherGrade, setFinalTeacherGrade] = useState(0);
 
-        // testPart.TeacherGrade = grade;
-        dispatch(updateTestPart({ ...testPart, TeacherGrade: grade }));
-    }
+  useEffect(() => {
 
-    // useEffect(() => {
+    const sumPoints: number = testPartsData.reduce((prev, tp) =>
+      prev + tp.TestPartPoints - (tp.PointsToReduce || 0)
+      , 0);
 
-    //     selectedRemarks.forEach(selectedRemark=>{
+    setFinalGrade(sumPoints);
 
-    //     })
-    //     // selectedRemarks.filter(selectedRemark=>se)
-    //     console.log("selected remarks changed");
-    // }, [selectedRemarks])
+    const sumTeacherPoints: number = testPartsData.reduce((prev, tp) =>
+      prev + (tp.TeacherGrade || tp.TestPartPoints)
+      , 0);
 
-    return <SlidersWrapper>
+    setFinalTeacherGrade(sumTeacherPoints);
 
-        {
-            testPartsData.map(testPart =>
+  }, [testPartsData]);
 
-                <TestPartStyle key={testPart.TestPartId}>
-                    <p>  {testPart.TestPartDsc}</p>
-                    <p> ציון מחושב: {testPart.TestPartPoints - (testPart.PointsToReduce || 0)} </p>
-                   
-                    {isPrintMode && 
-                       <p> ציון המורה: {testPart.TeacherGrade|| testPart.TestPartPoints} </p>
-                    }
-                   {!isPrintMode && <TextField
-                        id="combo-box-demo"
-                        label="ציון המורה"
-                        type="number"
-                        defaultValue={testPart.TestPartPoints}
-                        InputProps={{ inputProps: { min: 0, max: testPart.TestPartPoints } }}
-                        style={{ width: 100 }}
-                        onChange={(event) => updateTeacherGrade(testPart, Number(event.target.value))}
-                    />}
+  const dispatch = useDispatch();
 
-                </TestPartStyle>
+  const updateTeacherGrade = (testPart: TestPart, grade: number) => {
 
+    // testPart.TeacherGrade = grade;
+    dispatch(updateTestPart({ ...testPart, TeacherGrade: grade }));
+  }
 
-                // <SlidersContext key={testPart.TestPartId}>
+  // useEffect(() => {
 
-                //     <Grid container alignItems="center">
-                //         <Grid item xs>
-                //             <Typography gutterBottom variant="h4" component="div">
-                //             {testPart.TestPartDsc}
-                //             </Typography>
-                //         </Grid>
-                //         {/* <Grid item>
-                //             <Typography gutterBottom variant="h6" component="div">
-                //                 $4.50
-                //             </Typography>
-                //         </Grid> */}
-                //     </Grid>
-                //     <Typography color="text.secondary" variant="body2">
-                //     ציון ממוחשב: {testPart.TestPartPoints - (testPart.PointsToReduce || 0)} 
-                //     </Typography>
-                //     <Typography color="text.secondary" variant="body2">
-                //     <TextField
-                //         id="combo-box-demo"
-                //         label="ציון המורה"
-                //         type="number"
-                //         defaultValue={testPart.TestPartPoints}
-                //         InputProps={{ inputProps: { min: 0, max: testPart.TestPartPoints } }}
-                //         style={{ width: 100 }}
-                //         onChange={(event)=>updateTeacherGrade(testPart, Number(event.target.value))}
-                //     />
-                //     </Typography>
+  //     selectedRemarks.forEach(selectedRemark=>{
 
-                //     {/* {testPart.TestPartDsc}
-                //     <br />
-                //     {testPart.TestPartPoints - (testPart.PointsToReduce || 0)} ציון ממוחשב: */}
-                // </SlidersContext>
-            )
-        }
-    </SlidersWrapper>
+  //     })
+  //     // selectedRemarks.filter(selectedRemark=>se)
+  //     console.log("selected remarks changed");
+  // }, [selectedRemarks])
+
+  return <SlidersWrapper>
+
+    <TableContainer>
+      <Table>
+        <TableHead>
+          <TableRow>
+            <TableCell>
+
+            </TableCell>
+            {testPartsData.map(testPart =>
+              <TableCell>
+                {testPart.TestPartDsc}
+              </TableCell>
+
+            )}
+            <TableCell>
+              ציון סופי
+            </TableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          {/* {testPartsData.map(testPart => */}
+          <TableRow>
+            <TableCell style={{ fontWeight: "900", textAlign: "center" }}>
+              ציון מחושב
+            </TableCell>
+            {testPartsData.map(testPart =>
+              <TableCell>
+                {testPart.TestPartPoints - (testPart.PointsToReduce || 0)}
+              </TableCell>
+
+            )}
+            <TableCell >
+              {finalGrade}
+            </TableCell>
+          </TableRow>
+          <TableRow>
+            <TableCell style={{ fontWeight: "900", textAlign: "center" }}>
+              ציון המורה
+            </TableCell>
+            {testPartsData.map(testPart =>
+              <TableCell>
+                {isPrintMode &&
+                  <p> {testPart.TeacherGrade || testPart.TestPartPoints} </p>
+                }
+                {!isPrintMode && <TextField
+                  id="combo-box-demo"
+                  type="number"
+                  hidden={!isPrintMode}
+                  defaultValue={testPart.TestPartPoints}
+                  InputProps={{ inputProps: { min: 0, max: testPart.TestPartPoints } }}
+                  style={{ width: 100 }}
+                  onChange={(event) => updateTeacherGrade(testPart, Number(event.target.value))}
+                />}
+
+              </TableCell>
+
+            )}
+            <BoldTableCell style={{ fontWeight: "900" }}>
+              {finalTeacherGrade}
+
+            </BoldTableCell>
+          </TableRow>
+          {/* )} */}
+        </TableBody>
+      </Table>
+    </TableContainer>
+
+    <div>
+      <br/>
+      ציון מאמר חלקי שתים: {finalTeacherGrade / 2}
+    </div>
+ </SlidersWrapper>
 
 };

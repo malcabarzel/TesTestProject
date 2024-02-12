@@ -50,7 +50,7 @@ export const App = () => {
 
         </Container>
         <TestPartsView></TestPartsView>
-        <Grades></Grades>
+        {/* <Grades></Grades> */}
         <Container fixed style={{ padding: "20px" }}>
           {!isPrintMode && <>
             <SelectRemark testParts={testParts} />

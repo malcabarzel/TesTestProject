@@ -2,7 +2,7 @@ import  TestPart  from "./TestPart";
 
 // import React from "react";
 export interface Remark {
-    RemarkId: number,
+    RemarkId: string,
     RemarkName: string,
     RemarkDsc: string,
     TestTypeId: number,

@@ -18,7 +18,7 @@ export const SlidersContext = styled.div`
     width: 47%;
  `
 
-export const GradesTable = styled(Table)`
+export const GradesTableStyle = styled(Table)`
 table: {
   minWidth: 650,
   "& .MuiTableCell-root": {

@@ -7,17 +7,16 @@ import SelectedRemarksList from './pages/selectedRemarksList/selectedRemarksList
 import { Container } from '@mui/material';
 import Box from '@mui/material/Box';
 import Switch from '@mui/material/Switch';
+import { StyledEngineProvider } from '@mui/material/styles';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Directions from './helpers/Directions';
 import { students as dataStudents, testParts as dataTestParts } from './initialData';
 import { Student } from './models/Student';
 import TestPart from './models/TestPart';
-import Grades from './pages/grades/Grades';
+import { GradesTable } from './pages/gradesTable';
 import { SelectedRemarksDiv } from './pages/pagesStyle';
-import { TestPartsView } from './pages/testPartsView/TestPartsView';
 import { updatePrintMode } from './state/testParts.slice';
-import { StyledEngineProvider } from '@mui/material/styles';
 
 export const App = () => {
   const [students, setStudents] = useState<Student[]>([]);
@@ -52,7 +51,7 @@ export const App = () => {
             <SelectTest students={students} />
 
           </Container>
-          <TestPartsView></TestPartsView>
+          <GradesTable></GradesTable>
           {/* <Grades></Grades> */}
           <Container fixed style={{ padding: "20px" }}>
             {!isPrintMode && <>

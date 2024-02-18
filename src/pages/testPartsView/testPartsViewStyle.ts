@@ -1,3 +1,4 @@
+import { Table } from "@mui/material";
 import styled from "styled-components";
 
 export const SlidersWrapper = styled.div`
@@ -16,3 +17,12 @@ export const SlidersContext = styled.div`
     display: inline-block;
     width: 47%;
  `
+
+export const GradesTable = styled(Table)`
+table: {
+  minWidth: 650,
+  "& .MuiTableCell-root": {
+    border: '1px solid black'
+  }
+}
+`;

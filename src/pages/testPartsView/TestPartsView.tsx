@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import TestPart from "../../models/TestPart";
 import { SelecedRemark } from "../../models/SelectedRemark";
-import { SlidersContext, SlidersWrapper, TestPartStyle } from "./testPartsViewStyle";
+import { GradesTable, SlidersContext, SlidersWrapper, TestPartStyle } from "./testPartsViewStyle";
 import { updateTestPart } from "../../state/testParts.slice";
 import { BoldTableCell } from "../pagesStyle";
 
@@ -55,11 +55,11 @@ export const TestPartsView = () => {
   return <SlidersWrapper>
 
     <TableContainer>
-      <Table>
+      <GradesTable>
         <TableHead>
           <TableRow>
             <TableCell>
-
+            חישוב נק'
             </TableCell>
             {testPartsData.map(testPart =>
               <TableCell>
@@ -67,8 +67,13 @@ export const TestPartsView = () => {
               </TableCell>
 
             )}
+            <TableCell>ס"ה %
+              
+            </TableCell>
             <TableCell>
-              ציון סופי
+              ציון חלק ב
+              <br />
+              הבעה
             </TableCell>
           </TableRow>
         </TableHead>
@@ -86,6 +91,9 @@ export const TestPartsView = () => {
             )}
             <TableCell >
               {finalGrade}
+            </TableCell>
+            <TableCell>
+              
             </TableCell>
           </TableRow>
           <TableRow>
@@ -114,16 +122,21 @@ export const TestPartsView = () => {
               {finalTeacherGrade}
 
             </BoldTableCell>
+            <BoldTableCell style={{ fontWeight: "900" }}>
+              {finalTeacherGrade / 2}
+
+            </BoldTableCell>
           </TableRow>
+          
           {/* )} */}
         </TableBody>
-      </Table>
+      </GradesTable>
     </TableContainer>
 
-    <div>
-      <br/>
+    {/* <div>
+      <br />
       ציון מאמר חלקי שתים: {finalTeacherGrade / 2}
-    </div>
- </SlidersWrapper>
+    </div> */}
+  </SlidersWrapper>
 
 };

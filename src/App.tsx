@@ -17,6 +17,7 @@ import Grades from './pages/grades/Grades';
 import { SelectedRemarksDiv } from './pages/pagesStyle';
 import { TestPartsView } from './pages/testPartsView/TestPartsView';
 import { updatePrintMode } from './state/testParts.slice';
+import { StyledEngineProvider } from '@mui/material/styles';
 
 export const App = () => {
   const [students, setStudents] = useState<Student[]>([]);
@@ -38,35 +39,38 @@ export const App = () => {
   }, [])
 
   return (
-    <Directions>
+
+    <StyledEngineProvider>
+      <Directions>
 
 
-      <Box style={{padding:'10px'}} sx={{ flexGrow: 1, maxWidth: 7520 }}>
-        <Switch onChange={changePrintMode}
-          inputProps={{ 'aria-label': 'controlled' }}></Switch>
-        <Container fixed style={{ padding: "20px" }}>
+        <Box style={{ padding: '10px' }} sx={{ flexGrow: 1, maxWidth: 7520 }}>
+          <Switch onChange={changePrintMode}
+            inputProps={{ 'aria-label': 'controlled' }}></Switch>
+          <Container fixed style={{ padding: "20px" }}>
 
-          <SelectTest students={students} />
+            <SelectTest students={students} />
 
-        </Container>
-        <TestPartsView></TestPartsView>
-        {/* <Grades></Grades> */}
-        <Container fixed style={{ padding: "20px" }}>
-          {!isPrintMode && <>
-            <SelectRemark testParts={testParts} />
-          </>
-          }
-        </Container>
-     
-        <SelectedRemarksDiv>
-          <SelectedRemarksList></SelectedRemarksList>
-        </SelectedRemarksDiv>
+          </Container>
+          <TestPartsView></TestPartsView>
+          {/* <Grades></Grades> */}
+          <Container fixed style={{ padding: "20px" }}>
+            {!isPrintMode && <>
+              <SelectRemark testParts={testParts} />
+            </>
+            }
+          </Container>
 
-        {/* <SelectPointsDiv>
+          <SelectedRemarksDiv>
+            <SelectedRemarksList></SelectedRemarksList>
+          </SelectedRemarksDiv>
+
+          {/* <SelectPointsDiv>
          <SelectPoints type={1} partName1={"d"}>  </SelectPoints>  
       </SelectPointsDiv> */}
-      </Box>
-    </Directions>
+        </Box>
+      </Directions>
+    </StyledEngineProvider>
   );
 }
 

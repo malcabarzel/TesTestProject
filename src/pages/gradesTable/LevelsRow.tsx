@@ -1,6 +1,6 @@
 import { TableCell, TableRow, TextField, TextareaAutosize } from "@mui/material"
 import TestPart from "../../models/TestPart"
-import { finalGradeLevels } from "../../initialData"
+//import { finalGradeLevels } from "../../initialData"
 
 export const LevelsRow = ({ testPartsData }: { testPartsData: TestPart[] }) => {
 
@@ -22,9 +22,9 @@ export const LevelsRow = ({ testPartsData }: { testPartsData: TestPart[] }) => {
 
     </TableCell>
     <TableCell>
-      {finalGradeLevels.map(dsc =>
+{/*       {finalGradeLevels.map(dsc =>
         <p>{dsc}</p>
-      )}
+      )} */}
     </TableCell>
   </TableRow>
 

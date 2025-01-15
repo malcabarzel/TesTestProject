@@ -2,50 +2,78 @@ import { Remark } from "./models/Remark";
 import TestPart from "./models/TestPart";
 
 export const students = [{
-    studentId: 1,
-    name: "שולמית",
-    familyName: "אייזנשטיין",
-    classId: 1
+  studentId: 1,
+  name: "שולמית",
+  familyName: "אייזנשטיין",
+  classId: 1
 },
 {
-    studentId: 2,
-    name: "הדסה",
-    familyName: "לוי",
-    classId: 1
+  studentId: 2,
+  name: "הדסה",
+  familyName: "לוי",
+  classId: 1
 },
 {
-    studentId: 3,
-    name: "נחמה",
-    familyName: "כהן",
-    classId: 1
+  studentId: 3,
+  name: "נחמה",
+  familyName: "כהן",
+  classId: 1
 }
 ];
 
 export const testParts: TestPart[] = [{
-    TestTypeId: 1,
-    TestPartId: 1,
-    TestPartDsc: 'תוכן',
-    TestPartPoints: 40
-},
- {
-    TestTypeId: 1,
-    TestPartId: 2,
-    TestPartDsc: 'מבנה',
-    TestPartPoints: 20
-},
-{
-    TestTypeId: 1,
-    TestPartId: 3,
-    TestPartDsc: 'לשון',
-    TestPartPoints: 20
+  TestTypeId: 1,
+  TestPartId: 1,
+  TestPartDsc: 'תוכן',
+  TestPartPoints: 40,
+  LevelsDsc: [
+    `37-40 מצוין`,
+    `33-36 ט"מ `,
+    `28-32 טוב`,
+    `21-28 גבולי`,
+    `0-20 חלש`
+  ],
+  Levels: [
+    { from: 0, to: 5, description: '' }
+  ]
 },
 {
-    TestTypeId: 1,
-    TestPartId: 4,
-    TestPartDsc: 'תקינות',
-    TestPartPoints: 20
+  TestTypeId: 1,
+  TestPartId: 2,
+  TestPartDsc: 'מבנה',
+  TestPartPoints: 20,
+  LevelsDsc: [`19-20 מצוין`,
+    `17-18 ט"מ`,
+    `14-16 טוב`,
+    `11-14 גבולי`,
+    `0-10 חלש`]
+},
+{
+  TestTypeId: 1,
+  TestPartId: 3,
+  TestPartDsc: 'לשון',
+  TestPartPoints: 20,
+  LevelsDsc: [`19-20 מצוין`,
+    `17-18 ט"מ`,
+    `14-16 טוב`,
+    `11-14 גבולי`,
+    `0-10 חלש`,
+  ],
+},
+{
+  TestTypeId: 1,
+  TestPartId: 4,
+  TestPartDsc: 'תקינות',
+  TestPartPoints: 20,
+  LevelsDsc: [`19-20 מצוין`,
+    `17-18 ט"מ`,
+    `14-16 טוב`,
+    `11-14 גבולי`,
+    `0-10 חלש`
+  ],
 }
 ];
+
 
 export const remarks: Remark[] =[
     { RemarkId:"1",TestPartId: 1,TestTypeId: 1, RemarkPoints:2, RemarkName: "הערת תוכן", 
@@ -222,8 +250,3 @@ RemarkDsc: 'לב) 🖌כתבי בכתב ברור ומסודר/ בגודל נוח
 RemarkDsc: 'לג) אין לכתוב בעיפרון או למחוק בטיפקס / כתיבה בעט מחיק אינה חוקית. 🗑התוצאה על אחריותך/ אין לגזור דף ולהדביקו.. ', },
  {  RemarkId:"לד",TestPartId: 4,TestTypeId: 1, RemarkPoints:0.5, RemarkName: 'הערת תקינות', 
 RemarkDsc: 'לד) 🖌📑סמני את דפי הטיוטה ברור גדול וצבעוני🖍 / סמני ברור ומודגש קטעים בטיוטה שנועדו לבדיקה. 🔎'}
-]
-
-
-
-

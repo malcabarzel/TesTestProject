@@ -1,4 +1,3 @@
-import { testParts } from "../initialData"
 
 export default interface TestPart {
     TestPartId: number,
@@ -7,7 +6,9 @@ export default interface TestPart {
     TestPartDsc: string,
     TestPartPoints:number,
     PointsToReduce?:number,
-    TeacherGrade?:number
+    TeacherGrade?:number,
+    LevelsDsc?:string[],
+    Levels?:any[]
 }
 
 export const GetTestPart = (testPartId: number, testParts: TestPart[]) => {

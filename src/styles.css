@@ -2,3 +2,11 @@
   font-family: sans-serif;
   text-align: center;
 }
+
+
+table {
+  minWidth: 650;
+  & .MuiTableCell-root {
+    border: '1px solid black'
+  }
+}

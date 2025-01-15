@@ -249,4 +249,4 @@ RemarkDsc: 'לב) 🖌כתבי בכתב ברור ומסודר/ בגודל נוח
  { RemarkId:"לג",TestPartId: 4,TestTypeId: 1, RemarkPoints:0.5, RemarkName: 'הערת תקינות', 
 RemarkDsc: 'לג) אין לכתוב בעיפרון או למחוק בטיפקס / כתיבה בעט מחיק אינה חוקית. 🗑התוצאה על אחריותך/ אין לגזור דף ולהדביקו.. ', },
  {  RemarkId:"לד",TestPartId: 4,TestTypeId: 1, RemarkPoints:0.5, RemarkName: 'הערת תקינות', 
-RemarkDsc: 'לד) 🖌📑סמני את דפי הטיוטה ברור גדול וצבעוני🖍 / סמני ברור ומודגש קטעים בטיוטה שנועדו לבדיקה. 🔎'}
+RemarkDsc: 'לד) 🖌📑סמני את דפי הטיוטה ברור גדול וצבעוני🖍 / סמני ברור ומודגש קטעים בטיוטה שנועדו לבדיקה. 🔎'}];

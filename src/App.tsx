@@ -51,7 +51,10 @@ export const App = () => {
             <SelectTest students={students} />
 
           </Container>
-          <GradesTable></GradesTable>
+         
+
+          
+         
           {/* <Grades></Grades> */}
           <Container fixed style={{ padding: "20px" }}>
             {!isPrintMode && <>
@@ -59,11 +62,10 @@ export const App = () => {
             </>
             }
           </Container>
-
           <SelectedRemarksDiv>
             <SelectedRemarksList></SelectedRemarksList>
           </SelectedRemarksDiv>
-
+          <GradesTable></GradesTable>
           {/* <SelectPointsDiv>
          <SelectPoints type={1} partName1={"d"}>  </SelectPoints>  
       </SelectPointsDiv> */}

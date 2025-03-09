@@ -82,11 +82,11 @@ function SelectedRemarksList() {
                   remark.Remark.RemarkId + " " + remark.Remark.RemarkName
                 }
                 secondary={
-                  <RemarkContect>
-                    {remark.Remark.RemarkDsc} <br />{" "}
-                    {remark.Remark.RemarkPoints + " נקודות"}
+                   <RemarkContect>
+                     {remark.Remark.RemarkDsc} <br />{" "}
+                   {/* {remark.Remark.RemarkPoints + " נקודות"} */}
                   </RemarkContect>
-                }
+                 }
               />
 
             </ListItem>

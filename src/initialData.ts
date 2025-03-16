@@ -40,7 +40,7 @@ export const testParts: TestPart[] = [{
 {
   TestTypeId: 1,
   TestPartId: 2,
-  TestPartDsc: 'לשון',
+  TestPartDsc: ' לשון ותקינות',
   TestPartPoints: 40,
   LevelsDsc: [`35-40 טוב`,
     `30-35 בינוני`,

@@ -68,7 +68,7 @@ RemarkDsc: "		משפט המפתח שכתבת הוא פרט /דוגמא. שלבי
  { RemarkId:"7",TestPartId: 1,TestTypeId: 1, RemarkPoints:2, RemarkName: "הערת תוכן", 
 RemarkDsc: "	חסר מ' מפתח מוגדר וממוקד/ חזרת על הטענה/ התופעה/ כתבת תחום, סיסמה או מטאפורה מעורפלת, כתבי נימוק ברור.", },
  { RemarkId:"8",TestPartId: 1,TestTypeId: 1, RemarkPoints:2, RemarkName: "הערת תוכן", 
-RemarkDsc: "	הקשר של מ' המפתח לנושא אינו ישיר/ מדויק/ ברור/ הגיוני/ מציאותי/ כתבת נימוק לנימוק. כתבי מ' מפתח מתאים לפי הדגם. ", },
+RemarkDsc: "	הקשר של מ' המפתח לנושא אינו ישיר/ מדויק/ ברור/ הגיוני/ מציאותי/ כתבת נימוק לנימוק. כתבי מ' מפתח מתאים לפי ההנחיה/ נסחי כגורם/ נסחי כתוצאה. ", },
  { RemarkId:"9",TestPartId: 1,TestTypeId: 1, RemarkPoints:1, RemarkName: "הערת תוכן", 
 RemarkDsc: "	נסחי את הנימוק על דרך החיוב ולא על דרך השלילה. 💬 (בתוך הפיסקה תוכלי לכתוב גם על דרך השלילה.)", },
  { RemarkId:"10",TestPartId: 1,TestTypeId: 1, RemarkPoints:2, RemarkName: "הערת תוכן", 

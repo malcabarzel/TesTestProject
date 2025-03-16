@@ -1,4 +1,4 @@
-import React, { ChangeEvent, PropsWithChildren, useCallback, useState } from "react";
+import React, { ChangeEvent, PropsWithChildren, useCallback, useRef, useState } from "react";
 import { TextField, Grid, Button, Typography } from "@mui/material";
 import Autocomplete, {
   AutocompleteChangeReason
@@ -54,7 +54,7 @@ function SelectRemark(props: PropsWithChildren<SelectRemarkData>) {
       setTimeout(() => {
         changeSelectedTestPart(null);
         setSelectedRemark(null);
-      }, 2000);
+      }, 1000);
     }
   }, [selectedRemark]);
 
@@ -84,7 +84,7 @@ function SelectRemark(props: PropsWithChildren<SelectRemarkData>) {
       dispatch(reducePoints({ testPart: selectedRemark.TestPartId, pointsToReduce: (selectedRemark.RemarkPoints || 0) }))
     }
   };
-
+ 
   return (
     <RootGrid container spacing={2}>
       <Grid item xs={8}>
